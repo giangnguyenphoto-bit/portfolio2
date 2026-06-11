@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Trường Giang - Senior Marketing & Brand Manager Portfolio</title>
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #ff007f;
+            --text-light: #ffffff;
+            --text-gray: #94a3b8;
+            --card-bg: rgba(11, 22, 44, 0.45);
+            --neon-glow: rgba(0, 242, 254, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            perspective: 1500px;
+        }
+
+        /* Glow Layer Background */
+        .bg-glow-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 10% 15%, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(255, 0, 127, 0.09) 0%, transparent 45%);
+            overflow: hidden;
+        }
+
+        .bg-grid-3d {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            z-index: -1;
+            background-image: 
+                linear-gradient(rgba(0, 242, 254, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 242, 254, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            transform: rotateX(70deg) translateY(-50%) translateX(-25%);
+            transform-origin: top center;
+            animation: gridDrive 16s linear infinite;
+        }
+
+        @keyframes gridDrive {
+            0% { transform: rotateX(70deg) translateY(-50%) translateX(-25%) translateZ(0); }
+            100% { transform: rotateX(70deg) translateY(-20%) translateX(-25%) translateZ(0); }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 200% 100%;
+            width: 0%;
+            z-index: 101;
+            animation: gradientMove 4s linear infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 200% 50%; }
+        }
+
+        /* Navigation Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: rgba(3, 7, 18, 0.70);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 6%;
+        }
+
+        .logo-box {
+            font-weight: 900;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, var(--primary), #fff, var(--accent));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            animation: gradientMove 6s linear infinite;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            padding: 6px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Layout */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            gap: 50px;
+            position: relative;
+            z-index: 10;
+            padding-top: 100px;
+        }
+
+        .hero-info {
+            max-width: 54%;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background: rgba(0, 242, 254, 0.08);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            border-radius: 30px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+        }
+
+        .badge::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s infinite;
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.4); opacity: 1; box-shadow: 0 0 10px var(--primary); }
+            100% { transform: scale(0.8); opacity: 0.5; }
+        }
+
+        .hero h1 {
+            font-size: 3.9rem;
+            font-weight: 900;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+            perspective: 500px;
+        }
+
+        .hero h1 span.light {
+            background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .hero h1 span.light:hover {
+            transform: scale(1.03) rotateX(10deg);
+            text-shadow: 0 10px 20px rgba(255,255,255,0.1);
+        }
+
+        .hero h1 span.gradient {
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            animation: shineText 5s linear infinite;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            transition: color 0.3s;
+        }
+
+        .hero p:hover { color: #f1f5f9; }
+
+        .hero-cta { display: flex; gap: 20px; }
+
+        .btn {
+            padding: 14px 34px;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #030712;
+            box-shadow: 0 8px 30px rgba(0, 242, 254, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.6);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }}
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(255, 0, 127, 0.05);
+            color: #fff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 0, 127, 0.25);
+        }
+
+        /* 3D Visual Frame */
+        .visual-container {
+            position: relative;
+            width: 460px;
+            height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            perspective: 1200px;
+        }
+
+        .avatar-wrapper {
+            position: absolute;
+            width: 270px;
+            height: 270px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.4), inset 0 0 20px rgba(255,0,127,0.3);
+            z-index: 5;
+            overflow: hidden;
+            animation: avatarFloat 5s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0) rotateY(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotateY(8deg) scale(1.03); }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--bg-dark);
+        }
+
+        .cube-orbit-zone {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: orbitRotation 18s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes orbitRotation {
+            0% { transform: rotateZ(0deg) rotateX(30deg) rotateY(15deg); }
+            100% { transform: rotateZ(360deg) rotateX(30deg) rotateY(15deg); }
+        }
+
+        .cube-3d {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            width: 105px;
+            height: 105px;
+            transform-style: preserve-3d;
+            animation: cubeSelfSpin 6s linear infinite;
+        }
+
+        @keyframes cubeSelfSpin {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); }
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 105px;
+            height: 105px;
+            background: rgba(8, 17, 36, 0.92);
+            border: 2px solid var(--primary);
+            box-shadow: inset 0 0 20px rgba(0, 242, 254, 0.65), 0 0 15px rgba(0, 242, 254, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+        }
+
+        .face-front  { transform: translateZ(52.5px); }
+        .face-back   {{ transform: rotateY(180deg) translateZ(52.5px); }}
+        .face-top    { transform: rotateX(90deg) translateZ(52.5px); }
+        .face-bottom { transform: rotateX(-90deg) translateZ(52.5px); }
+        .face-left   { transform: rotateY(-90deg) translateZ(52.5px); }
+        .face-right  { transform: rotateY(90deg) translateZ(52.5px); }
+
+        .cube-face img {
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+        }
+
+        /* Brands Slider Track */
+        .brands-showcase {
+            background: rgba(11, 22, 44, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 35px 0;
+            overflow: hidden;
+        }
+
+        .brands-track {
+            display: flex;
+            gap: 75px;
+            width: max-content;
+            animation: continuousScroll 26s linear infinite;
+        }
+
+        @keyframes continuousScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .brand-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 140px;
+        }
+
+        .brand-card img {
+            height: 55px;
+            max-width: 120px;
+            object-fit: contain;
+        }
+
+        .brand-card span {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Sections Titles Layout */
+        section { padding: 120px 8%; position: relative; z-index: 10; }
+        .section-title { font-size: 2.4rem; font-weight: 800; margin-bottom: 70px; text-align: center; letter-spacing: -0.5px; }
+        .section-title span { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* About Block */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .glass-card-3d {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            padding: 45px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
+        }
+
+        .glass-card-3d p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .metric-item {
+            background: rgba(11, 22, 44, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 35px 20px;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .metric-value {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 6px;
+        }
+
+        .metric-title {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Timeline Mechanical Design */
+        .timeline-structure {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            perspective: 1000px;
+        }
+
+        .timeline-structure::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent), transparent);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-node {
+            padding: 25px 50px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            transition: all 0.7s;
+            transform-style: preserve-3d;
+        }
+
+        .timeline-node.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .node-left { left: 0; text-align: right; }
+        .node-right { left: 50%; }
+
+        .timeline-node::after {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            right: -7px;
+            background-color: var(--bg-dark);
+            border: 3px solid var(--primary);
+            top: 35px;
+            border-radius: 50%;
+            z-index: 10;
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .node-right::after { left: -7px; right: auto; }
+
+        .card-inner-3d {
+            padding: 35px;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+            transform-style: preserve-3d;
+            transition: transform 0.15s ease-out;
+        }
+
+        .duration-badge {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(255, 0, 127, 0.08);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            color: var(--accent);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .card-inner-3d h3 {
+            font-size: 1.35rem;
+            margin-bottom: 6px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .org-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 18px;
+            justify-content: flex-start;
+        }
+
+        .node-left .org-header { justify-content: flex-end; }
+
+        .org-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: #ffffff;
+            padding: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .org-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+        }
+
+        .card-inner-3d ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .card-inner-3d ul li {
+            color: #94a3b8;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 18px;
+            text-shadow: none;
+        }
+
+        .card-inner-3d ul li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        /* Skills Matrix */
+        .skills-matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .matrix-skill-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 35px 25px;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .matrix-skill-card:hover {
+            transform: translateY(-12px) translateZ(20px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 242, 254, 0.2);
+        }
+
+        .skill-matrix-icon {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .matrix-skill-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .matrix-skill-card p {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* Portfolio Hub Layout */
+        .portfolio-hub {
+            background: linear-gradient(135deg, rgba(11,22,44,0.7), rgba(255,0,127,0.03));
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 24px;
+            padding: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+            backdrop-filter: blur(20px);
+        }
+
+        .portfolio-text-side { max-width: 58%; }
+        .portfolio-text-side h3 { font-size: 2rem; margin-bottom: 16px; font-weight: 800; }
+
+        .qr-scanner-widget {
+            background: rgba(255,255,255,0.01);
+            border: 2px dashed rgba(0, 242, 254, 0.4);
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .qr-matrix-box {
+            width: 150px;
+            height: 150px;
+            background: #ffffff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .qr-matrix-box::before {
+            content: '';
+            position: absolute;
+            width: 84%;
+            height: 84%;
+            background: repeating-linear-gradient(45deg, #030712, #030712 4px, #ffffff 4px, #ffffff 8px);
+            opacity: 0.9;
+        }
+
+        .qr-matrix-box::after {
+            content: 'SCAN';
+            position: absolute;
+            background: var(--accent);
+            color: #fff;
+            padding: 4px 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            border-radius: 4px;
+        }
+
+        /* Contact Modern Matrix Block */
+        .contact-panel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-glass-node {
+            background: var(--card-bg);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-node-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,0,127,0.07);
+            border: 1px solid rgba(255,0,127,0.35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .contact-node-details h4 {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .contact-node-details p { font-size: 1.05rem; font-weight: 600; color: #ffffff; }
+
+        footer {
+            text-align: center;
+            padding: 45px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-gray);
+            font-size: 0.88rem;
+        }
+
+        /* Social Responsive Fluid Hub Tracking */
+        .social-chat-hub {
+            position: absolute;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 9999;
+            pointer-events: auto;
+            transform: translateZ(50px);
+            transition: top 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .chat-widget-btn {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            background: #fff;
+            border: 2px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+        }
+
+        .chat-widget-btn:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .chat-widget-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .chat-widget-btn:hover img {
+            transform: scale(1.05);
+        }
+
+        .chat-widget-btn::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            animation: rippleEffect 2s infinite ease-out;
+            z-index: -1;
+        }
+        .chat-widget-btn.zalo-node::after { border: 2px solid #0068ff; }
+        .chat-widget-btn.fb-node::after { border: 2px solid #1877f2; animation-delay: 0.8s; }
+
+        @keyframes rippleEffect {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        .chat-tooltip {
+            position: absolute;
+            right: 75px;
+            background: rgba(8, 17, 36, 0.95);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #fff;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(15px);
+            transition: all 0.3s;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .chat-widget-btn:hover .chat-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* GEMINI FLOATING WIDGET */
+        .gemini-floating-trigger {
+            position: absolute;
+            right: 30px;
+            width: 62px;
+            height: 62px;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6, #93c5fd);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10000;
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.5), inset 0 0 12px rgba(255,255,255,0.3);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0.2s;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .gemini-floating-trigger:hover {
+            transform: scale(1.12) rotate(-10deg);
+        }
+
+        .gemini-icon-svg {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
+            animation: aiPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes aiPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .gemini-chat-container {
+            position: absolute;
+            right: 30px;
+            width: 390px;
+            height: 520px;
+            background: rgba(6, 11, 25, 0.98);
+            border: 1px solid rgba(0, 242, 254, 0.35);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 30px rgba(0, 242, 254, 0.15);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transform: scale(0.8) translateY(40px);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.4s, top 0.2s;
+            transform-origin: bottom right;
+        }
+
+        .gemini-chat-container.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .gemini-header {
+            background: linear-gradient(90deg, #0b162c, #1e293b);
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gemini-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gemini-avatar-spark {
+            width: 30px;
+            height: 30px;
+            background: #2563eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gemini-title-box h3 {
+            font-size: 0.95rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .gemini-title-box span {
+            font-size: 0.72rem;
+            color: #64748b;
+            display: block;
+        }
+
+        .gemini-close-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.4rem;
+            cursor: pointer;
+        }
+
+        .gemini-messages-box {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .msg-bubble {
+            max-width: 82%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .msg-gemini {
+            background: rgba(30, 41, 59, 0.6);
+            color: #e2e8f0;
+            align-self: flex-start;
+            border-radius: 4px 16px 16px 16px;
+            border: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .msg-user {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            align-self: flex-end;
+            border-radius: 16px 16px 4px 16px;
+        }
+
+        .gemini-input-area {
+            padding: 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            background: rgba(11, 22, 44, 0.2);
+            display: flex;
+            gap: 10px;
+        }
+
+        .gemini-input {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 12px 16px;
+            border-radius: 24px;
+            color: #fff;
+            font-size: 0.88rem;
+            outline: none;
+        }
+
+        .gemini-send-btn {
+            width: 42px;
+            height: 42px;
+            background: #2563eb;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-loader { display: flex; gap: 4px; padding: 4px 8px; align-self: flex-start; }
+        .typing-dot { width: 6px; height: 6px; background: #64748b; border-radius: 50%; animation: dotWave 1.4s infinite ease-in-out; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes dotWave { 0%, 100%, 60% { transform: translateY(0); } 30% { transform: translateY(-6px); } }
+
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding-top: 130px; gap: 60px; }
+            .hero-info { max-width: 100%; } .hero-cta { justify-content: center; } .about-layout { grid-template-columns: 1fr; }
+            .timeline-structure::before { left: 30px; }
+            .timeline-node { width: 100%; padding-left: 65px; padding-right: 10px; text-align: left !important; }
+            .node-right { left: 0; } .timeline-node::after { left: 23px !important; right: auto !important; }
+            .portfolio-hub { flex-direction: column; text-align: center; } .portfolio-text-side { max-width: 100%; }
+            .gemini-chat-container { width: calc(100vw - 40px); right: 20px; }
+            .gemini-floating-trigger { right: 20px; } .social-chat-hub { right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="pageProgressBar"></div>
+    <div class="bg-glow-layer"><div class="bg-grid-3d"></div></div>
+
+    <header>
+        <div class="logo-box">Giang Nguyen</div>
+        <nav>
+            <a href="#about">Giới Thiệu</a>
+            <a href="#experience">Kinh Nghiệm</a>
+            <a href="#skills">Kỹ Năng</a>
+            <a href="#portfolio">Dự Án</a>
+            <a href="#contact">Liên Hệ</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-info">
+            <span class="badge">Senior Marketing & Brand Manager</span>
+            <h1>
+                <span class="light">Đột Phá Tư Duy</span>
+                <span class="gradient">Nâng Tầm Thương Hiệu</span>
+            </h1>
+            <p>Tôi là Nguyễn Trường Giang, chuyên gia Quản lý Marketing với hơn 10 năm kinh nghiệm thực chiến trong các lĩnh vực F&B, FMCG, Giáo dục và Y tế. Từng dẫn dắt các chiến dịch truyền thông lớn cho Heineken, Golden Gate, Tập đoàn Giáo dục Đại Trường Phát và Bệnh viện Đại học Nam Cần Thơ, tôi mang đến các giải pháp tiếp thị sáng tạo, ứng dụng công nghệ AI tiên tiến nhằm tối ưu doanh số và xây dựng giá trị thương hiệu bền vững tại khu vực Đồng bằng sông Cửu Long (ĐBSCL).</p>
+            <div class="hero-cta">
+                <a href="#portfolio" class="btn btn-primary">Khám Phá Portfolio</a>
+                <a href="#contact" class="btn btn-secondary">Kết Nối Hợp Tác</a>
+            </div>
+        </div>
+
+        <div class="visual-container" id="avatar3DContainer">
+            <div class="avatar-wrapper">
+                <img src="053047649013114d4802.jpg" class="avatar-img" alt="Nguyễn Trường Giang">
+            </div>
+            <div class="cube-orbit-zone">
+                <div class="cube-3d">
+                    <div class="cube-face face-front"><img src="Logo Bệnh viện Đại học Nam Cần Thơ.png" alt="Bệnh viện Đại học Nam Cần Thơ"></div>
+                    <div class="cube-face face-back"><img src="DTP.jpg" alt="Tập đoàn Giáo dục Đại Trường Phát"></div>
+                    <div class="cube-face face-top"><img src="gogi-house-logo-inkythuatso-01-15-08-54-51.jpg" alt="GoGi"></div>
+                    <div class="cube-face face-bottom"><img src="10431320_Logo_Kichi-kichi-250-x-250.jpg" alt="Kichi"></div>
+                    <div class="cube-face face-left"><img src="logo GGG_vertital_168774578619.w-240.h-240.png" alt="Golden Gate"></div>
+                    <div class="cube-face face-right"><img src="Logo Cơm tấm Phúc Lộc Thọ.jpg" alt="Cơm Tấm Phúc Lộc Thọ"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="brands-showcase">
+        <div class="brands-track">
+            <div class="brand-card"><img src="Logo Bệnh viện Đại học Nam Cần Thơ.png" alt="Bệnh viện Đại học Nam Cần Thơ"><span>ĐH Nam Cần Thơ Hospital</span></div>
+            <div class="brand-card"><img src="DTP.jpg" alt="Tập đoàn Giáo dục Đại Trường Phát"><span>Đại Trường Phát (DTP)</span></div>
+            <div class="brand-card"><img src="Logo Cơm tấm Phúc Lộc Thọ.jpg" alt="Cơm Tấm Phúc Lộc Thọ"><span>Cơm Tấm Phúc Lộc Thọ</span></div>
+            <div class="brand-card"><img src="logo_heineken_20160804.jpg" alt="Heineken"><span>Heineken Vietnam</span></div>
+            <div class="brand-card"><img src="logo GGG_vertital_168774578619.w-240.h-240.png" alt="Golden Gate"><span>Golden Gate Group</span></div>
+            <div class="brand-card"><img src="10431320_Logo_Kichi-kichi-250-x-250.jpg" alt="Kichi Kichi"><span>Kichi Kichi</span></div>
+            <div class="brand-card"><img src="gogi-house-logo-inkythuatso-01-15-08-54-51.jpg" alt="GoGi House"><span>GoGi House</span></div>
+            <div class="brand-card"><img src="phamnghia_logo_retina.png" alt="Phạm Nghĩa Food"><span>Phạm Nghĩa Food</span></div>
+            <div class="brand-card"><img src="yen-sao-can-tho.2.png" alt="Yến Sào Gia Đạt"><span>Yến Sào Gia Đạt</span></div>
+            
+            <div class="brand-card"><img src="Logo Bệnh viện Đại học Nam Cần Thơ.png" alt="Bệnh viện Đại học Nam Cần Thơ"><span>ĐH Nam Cần Thơ Hospital</span></div>
+            <div class="brand-card"><img src="DTP.jpg" alt="Tập đoàn Giáo dục Đại Trường Phát"><span>Đại Trường Phát (DTP)</span></div>
+            <div class="brand-card"><img src="Logo Cơm tấm Phúc Lộc Thọ.jpg" alt="Cơm Tấm Phúc Lộc Thọ"><span>Cơm Tấm Phúc Lộc Thọ</span></div>
+            <div class="brand-card"><img src="logo_heineken_20160804.jpg" alt="Heineken"><span>Heineken Vietnam</span></div>
+            <div class="brand-card"><img src="logo GGG_vertital_168774578619.w-240.h-240.png" alt="Golden Gate"><span>Golden Gate Group</span></div>
+            <div class="brand-card"><img src="10431320_Logo_Kichi-kichi-250-x-250.jpg" alt="Kichi Kichi"><span>Kichi Kichi</span></div>
+            <div class="brand-card"><img src="gogi-house-logo-inkythuatso-01-15-08-54-51.jpg" alt="GoGi House"><span>GoGi House</span></div>
+            <div class="brand-card"><img src="phamnghia_logo_retina.png" alt="Phạm Nghĩa Food"><span>Phạm Nghĩa Food</span></div>
+            <div class="brand-card"><img src="yen-sao-can-tho.2.png" alt="Yến Sào Gia Đạt"><span>Yến Sào Gia Đạt</span></div>
+        </div>
+    </div>
+
+    <section id="about">
+        <h2 class="section-title">Hành Trình <span>Chuyên Nghiệp</span></h2>
+        <div class="about-layout">
+            <div class="glass-card-3d" id="mouseTiltCard">
+                <p>Chào mừng bạn đến với không gian sáng tạo của tôi. Xuất thân từ <strong>Trường Đại học Mỹ thuật Thành phố Hồ Chí Minh</strong> chuyên ngành Thiết kế đồ họa và Mỹ thuật truyền thông đa phương tiện, tôi sở hữu nền tảng tư duy thẩm mỹ sắc bén kết hợp cùng năng lực quản trị chiến lược toàn diện.</p>
+                <p>Trong suốt quá trình làm việc, tôi luôn đặt tiêu chí <strong>"Giá trị tạo ra kết quả"</strong> làm kim chỉ nam. Không chỉ dừng lại ở các ý tưởng bay bổng, tôi tập trung tối ưu hóa các chỉ số KPI, quản trị ngân sách tiếp thị hiệu quả (ATL & BTL), chuyển đổi số hệ thống truyền thông đa kênh và ứng dụng các giải pháp <strong>Automation & AI Marketing</strong> tối tân nhằm bứt phá hiệu suất doanh nghiệp.</p>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item"><div class="metric-value">10+</div><div class="metric-title">Năm Kinh Nghiệm</div></div>
+                <div class="metric-item"><div class="metric-value">50+</div><div class="metric-title">Chiến Dịch Lớn</div></div>
+                <div class="metric-item"><div class="metric-value">15+</div><div class="metric-title">Thương Hiệu Lớn</div></div>
+                <div class="metric-item"><div class="metric-value">100%</div><div class="metric-title">Cam Kết Kết Quả</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">Kinh Nghiệm <span>Thực Chiến</span></h2>
+        <div class="timeline-structure">
+            
+            <div class="timeline-node node-right">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">11/2025 - Nay</span>
+                    <div class="org-header">
+                        <img src="Logo Bệnh viện Đại học Nam Cần Thơ.png" class="org-logo" alt="Bệnh viện Đại học Nam Cần Thơ">
+                        <div class="org-title">BỆNH VIỆN ĐẠI HỌC NAM CẦN THƠ</div>
+                    </div>
+                    <h3>Phó Phòng PTDV & Truyền Thông</h3>
+                    <ul>
+                        <li>Tham mưu cho Ban Giám đốc, xây dựng chiến lược truyền thông tổng thể và phát triển các gói dịch vụ y tế mũi nhọn.</li>
+                        <li>Lập dự toán và tối ưu hóa ngân sách Marketing/PR toàn diện.</li>
+                        <li>Quản trị hệ thống nhận diện thương hiệu và đồng bộ POSM toàn viện; kiểm soát chất lượng nội dung y khoa chuyên sâu.</li>
+                        <li>Vận hành tối ưu hệ thống đa kênh Social Media (FB, TikTok, YT, Zalo); duy trì mối quan hệ báo chí tốt và trực tiếp xử lý khủng hoảng truyền thông ngành y tế.</li>
+                        <li>Tổ chức thành công Lễ công bố chứng nhận kiểm định chất lượng quốc tế AACI, các hội thảo khoa học quy mô và chuỗi hoạt động CSR khám từ thiện.</li>
+                        <li>Tư vấn tham mưu cho Ban Giám đốc về xu hướng y tế tại khu vực.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-left">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">05/2024 - 11/2025</span>
+                    <div class="org-header">
+                        <img src="DTP.jpg" class="org-logo" alt="Đại Trường Phát">
+                        <div class="org-title">TẬP ĐOÀN GIÁO DỤC ĐẠI TRƯỜNG PHÁT (DTP)</div>
+                    </div>
+                    <h3>Trưởng Bộ Phận MKT tại Mekongdelta</h3>
+                    <ul>
+                        <li>Xây dựng chiến lược marketing địa phương: Lập kế hoạch phù hợp với đặc thù giáo dục tại khu vực Đồng bằng sông Cửu Long.</li>
+                        <li>Quản lý thương hiệu: Đảm bảo hình ảnh thương hiệu DTP đồng bộ tại khu vực theo tiêu chuẩn tập đoàn.</li>
+                        <li>Tổ chức sự kiện & hội thảo chuyên môn: Lên kế hoạch và tổ chức các hội thảo chuyên môn, hội thảo chuyển đổi số, tập huấn phương pháp giảng dạy cho giáo viên.</li>
+                        <li>Phát triển kênh truyền thông: Quản trị các kênh truyền thông tại khu vực bao gồm Social Media, Email Marketing.</li>
+                        <li>Hỗ trợ kinh doanh (Sales Enablement): Cung cấp tài liệu bán hàng, brochure, demo sản phẩm số cho đội ngũ kinh doanh.</li>
+                        <li>Báo cáo & phân tích: Theo dõi KPIs, phản hồi thị trường và hiệu quả các chiến dịch, đề xuất điều chỉnh kịp thời cho Ban lãnh đạo.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-right">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">07/2023 - 04/2024</span>
+                    <div class="org-header">
+                        <img src="Logo Cơm tấm Phúc Lộc Thọ.jpg" class="org-logo" alt="Cơm Tấm Phúc Lộc Thọ">
+                        <div class="org-title">CÔNG TY CỔ PHẦN THỰC PHẨM PHÚC LỘC THỌ</div>
+                    </div>
+                    <h3>Brand Manager</h3>
+                    <ul>
+                        <li>Hoạch định chiến lược định vị và xâm nhập thị trường cho các nhãn hiệu phụ trách.</li>
+                        <li>Lập kế hoạch dự trù chi phí cho các hoạt động Marketing theo định kỳ hàng năm, quý và tháng nhằm đạt được mục tiêu kinh doanh đã đề ra cho các điểm bán mình phụ trách.</li>
+                        <li>Định hướng và lập kế hoạch phát triển các nhãn hiệu, dòng sản phẩm phù hợp với nhu cầu thị trường và hiệu quả đầu tư.</li>
+                        <li>Phụ trách xây dựng các quy định và tiêu chuẩn thương hiệu (Brand Guidelines) cho các nhãn mình phụ trách.</li>
+                        <li>Xây dựng và triển khai các chương trình, hoạt động khuyến mại đến khách hàng, nhằm tăng cường hoạt động kinh doanh, bán hàng hiệu quả cho các nhãn hiệu mình phụ trách (Thực hiện thành công dự án Phúc Lộc Thọ đồng hành cùng MISS EARTH VIỆT NAM 2023 và có mặt trong chương trình Xin chào Việt Nam - VTV4).</li>
+                        <li>Phối hợp với vận hành tìm hiểu đặc thù của từng khách hàng, thị trường để đưa ra những chương trình hỗ trợ phù hợp cho từng điểm bán; có biện pháp mở rộng thị phần và gia tăng doanh số bằng công cụ Marketing.</li>
+                        <li>Theo dõi đội thiết kế và truyền thông để đảm bảo các công việc sáng tạo nội dung được hoàn thành đúng Guidelines, và tiêu chuẩn của từng nhãn hiệu.</li>
+                        <li>Làm Creative Brief và góp ý cho đội thiết kế để sản phẩm thiết kế được tạo ra đúng định hướng kế hoạch, đúng ý đồ nội dung, đẹp và hiệu quả.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-left">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">12/2022 - 04/2023</span>
+                    <div class="org-header">
+                        <img src="yen-sao-can-tho.2.png" class="org-logo" alt="Yến Sào Gia Đạt">
+                        <div class="org-title">CTY TNHH MTV YẾN SÀO GIA ĐẠT</div>
+                    </div>
+                    <h3>Phó Giám Đốc</h3>
+                    <ul>
+                        <li>Hỗ trợ điều hành, quản trị các hoạt động của công ty cùng giám đốc; quản lý và tổ chức thực hiện những kế hoạch được đề ra.</li>
+                        <li>Đại diện giám đốc thực hiện công việc đối ngoại với các cơ quan nhà nước, đối tác, khách hàng...</li>
+                        <li>Quản lý các hoạt động trong phòng ban Tài chính – Kế toán.</li>
+                        <li>Lập kế hoạch kinh doanh thường niên để đảm bảo các hoạt động ấy khớp với chiến lược phát triển của doanh nghiệp.</li>
+                        <li>Nghiên cứu, phân tích và đánh giá tình hình thị trường, từ đó đề xuất kế hoạch phát triển sản phẩm phù hợp. Phối hợp cùng đội ngũ Marketing để thực hiện các dự án phát triển sản phẩm mới và tổ chức sản xuất.</li>
+                        <li>Xây dựng vận hành, mở rộng các kênh kinh doanh GT - MT - ECom - Horeca; tổ chức tham gia các hội chợ thương mại; xây dựng, vận hành quy trình bán hàng trên phần mềm quản lý các bộ phận.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-right">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">03/2017 - 12/2020</span>
+                    <div class="org-header">
+                        <img src="logo GGG_vertital_168774578619.w-240.h-240.png" class="org-logo" alt="Golden Gate">
+                        <div class="org-title">GOLDEN GATE GROUP</div>
+                    </div>
+                    <h3>Trade Marketing Manager KV Mekong</h3>
+                    <ul>
+                        <li>Triển khai, thực thi đầy đủ và báo cáo hiệu quả các chương trình Marketing. Đề xuất và triển khai các chương trình MKT khu vực Mekong.</li>
+                        <li>Đảm bảo chất lượng POSM sản xuất và thi công, đúng quy cách và thời gian yêu cầu; thu mua các vật dụng MKT được yêu cầu.</li>
+                        <li>Nghiên cứu thị trường, hành vi tiêu dùng của khách hàng và có những đề xuất phù hợp.</li>
+                        <li>Tìm kiếm các đối tác liên kết, hợp tác về sales & MKT tại địa điểm kinh doanh.</li>
+                        <li>Có trách nhiệm liên hệ và đầu mối contact đối với các cơ quan báo chí, influencer, freelancer tại địa phương phụ trách; quan hệ cơ quan chức năng.</li>
+                        <li>Phát triển mở chuỗi cụm nhà hàng tại Cà Mau (Kichi - GoGi 6/2017), Bạc Liêu (Kichi - GoGi 10/2019), Rạch Giá (Kichi - GoGi - Vuvuzela 12/2019), Sóc Trăng, Cao Lãnh (04/2020).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-left">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">06/2012 - 08/2021</span>
+                    <div class="org-header">
+                        <img src="phamnghia_logo_retina.png" class="org-logo" alt="Phạm Nghĩa Food">
+                        <div class="org-title">CTY CP THỰC PHẨM PHẠM NGHĨA</div>
+                    </div>
+                    <h3>Phó Phòng MKT</h3>
+                    <ul>
+                        <li>Xây dựng và thực hiện các chiến lược Marketing, quảng bá thương hiệu phù hợp với tầm nhìn và chiến lược kinh doanh của công ty.</li>
+                        <li>Phân tích, đánh giá các sản phẩm hiện tại, nghiên cứu thị trường các sản phẩm tiềm năng.</li>
+                        <li>Lên kế hoạch quản lý và phân bổ kinh phí cho các chương trình Marketing: ATL và BTL hiệu quả.</li>
+                        <li>Branding hệ thống NPP - đại lý, chuẩn hóa hệ thống nhận diện công ty và ngành hàng, đăng ký bảo hộ sản phẩm, lên ý tưởng và xây dựng nhận diện sản phẩm mới.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-node node-right">
+                <div class="card-inner-3d mechanical-node">
+                    <span class="duration-badge">04/2016 - 02/2017</span>
+                    <div class="org-header">
+                        <img src="logo_heineken_20160804.jpg" class="org-logo" alt="Heineken">
+                        <div class="org-title">CÔNG TY TNHH NHÀ MÁY BIA HEINEKEN VIỆT NAM</div>
+                    </div>
+                    <h3>Designer / Project Manager (HVBL Agency)</h3>
+                    <ul>
+                        <li>Phối hợp với các Agency thực hiện tốt công việc thiết kế các ấn phẩm truyền thông được giao.</li>
+                        <li>Project Manager các sự kiện (Big Events & Activation) của hãng bia Heineken trúng thầu danh giá: <strong>Heineken Green Room 2016</strong>, <strong>Tiger Remix 2016</strong>, Sự kiện đón Cúp UEFA Champions League lần thứ 3 tới Việt Nam (2017), Bức tường Tiger 2017.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Năng Lực <span>Cốt Lõi</span></h2>
+        <div class="skills-matrix-grid">
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">🎯</div><h3>Chiến Lược Thương Hiệu</h3><p>Hoạch định chiến lược định vị, tái định vị thương hiệu, lập Brand Guidelines chuẩn chỉnh, phát triển dải sản phẩm mới thâm nhập thị trường hiệu quả.</p></div>
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">📉</div><h3>Quản Trị Ngân Sách & KPI</h3><p>Tối ưu hóa ngân sách tiếp thị ATL & BTL, kiểm soát rủi ro tài chính, thiết lập chỉ số KPI chính xác và gia tăng tỷ lệ chuyển đổi ROI.</p></div>
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">🦾</div><h3>Digital & AI Marketing</h3><p>Làm chủ hệ thống Marketing số đa kênh, khai phá sức mạnh AI trong việc phân tích dữ liệu thị trường, Automation và bứt phá sáng tạo nội dung Multimedia.</p></div>
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">🎨</div><h3>Tư Duy Mỹ Thuật Sự Kiện</h3><p>Tốt nghiệp ĐH Mỹ Thuật TP.HCM giúp tôi kiểm soát và phê duyệt các ấn phẩm POSM, Key Visual, Creative Brief ở tiêu chuẩn thẩm mỹ cao cấp nhất.</p></div>
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">📢</div><h3>PR & Xử Lý Khủng Hoảng</h3><p>Thiết lập mối quan hệ sâu rộng với các cơ quan thông tấn báo chí, chính quyền sở tại, KOLs; có kinh nghiệm xử lý khủng hoảng truyền thông y tế và F&B phức tạp.</p></div>
+            <div class="matrix-skill-card"><div class="skill-matrix-icon">🚀</div><h3>Lãnh Đạo & Phát Triển Đội Nhóm</h3><p>Kỹ năng quản trị nhân sự chuyên nghiệp, truyền cảm hứng, đào tạo kỹ năng nội bộ và gắn kết đội ngũ vượt qua áp lực cao để hoàn thành mục tiêu chung.</p></div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Hồ Sơ <span>Năng Lực</span></h2>
+        <div class="portfolio-hub">
+            <div class="portfolio-text-side">
+                <h3>Khám Phá Toàn Bộ Tác Phẩm Sáng Tạo</h3>
+                <p>Hệ thống Portfolio trực tuyến lưu trữ toàn bộ các dự án thiết kế sự kiện (Key Visual), quy chuẩn bộ nhận diện thương hiệu hoàn chỉnh, các chiến dịch ra mắt cụm nhà hàng F&B quy mô và chiến lược PR đa kênh ngành Y tế do tôi trực tiếp triển khai thực chiến.</p>
+                <span class="badge" style="background: rgba(255,0,127,0.06); border-color: var(--accent); color: var(--accent);">Đột phá & Đẳng cấp</span>
+            </div>
+            <div class="qr-scanner-widget">
+                <div class="qr-matrix-box"></div>
+                <span style="font-weight: 600; font-size: 0.9rem; color: #fff;">Quét để xem chi tiết Portfolio</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Kết Nối <span>Hợp Tác</span></h2>
+        <div class="contact-panel-grid">
+            <div class="contact-glass-node"><div class="contact-node-icon">📞</div><div class="contact-node-details"><h4>Hotline di động</h4><p>0932 454 245</p></div></div>
+            <div class="contact-glass-node"><div class="contact-node-icon">✉️</div><div class="contact-node-details"><h4>Hộp thư điện tử</h4><p>giangnguyen89.as@gmail.com</p></div></div>
+            <div class="contact-glass-node"><div class="contact-node-icon">📍</div><div class="contact-node-details"><h4>Địa chỉ làm việc</h4><p>P. Cái Răng, TP. Cần Thơ</p></div></div>
+        </div>
+    </section>
+
+    <div class="social-chat-hub" id="dynamicChatHub">
+        <a href="https://zalo.me/0932454245" target="_blank" class="chat-widget-btn zalo-node" aria-label="Chat qua Zalo">
+            <img src="logo-zalo-vector.png" alt="Zalo">
+            <div class="chat-tooltip">Chat Zalo: 0932 454 245</div>
+        </a>
+        <a href="https://www.facebook.com/Giantsprodcution/" target="_blank" class="chat-widget-btn fb-node" aria-label="Ghé thăm Facebook">
+            <img src="2023_Facebook_icon.svg.webp" alt="Facebook">
+            <div class="chat-tooltip">Kết nối Facebook cá nhân</div>
+        </a>
+    </div>
+
+    <div class="gemini-floating-trigger" id="geminiTriggerBtn">
+        <svg class="gemini-icon-svg" viewBox="0 0 24 24">
+            <path d="M12 22C12 22 12 17 17 12C12 12 12 7 12 2C12 2 12 7 7 12C12 12 12 17 12 22Z"/>
+        </svg>
+    </div>
+
+    <div class="gemini-chat-container" id="geminiChatWindow">
+        <div class="gemini-header">
+            <div class="gemini-profile">
+                <div class="gemini-avatar-spark">
+                    <svg style="width:16px; height:16px; fill:#fff;" viewBox="0 0 24 24">
+                        <path d="M12 22C12 22 12 17 17 12C12 12 12 7 12 2C12 2 12 7 7 12C12 12 12 17 12 22Z"/>
+                    </svg>
+                </div>
+                <div class="gemini-title-box">
+                    <h3>Trợ lý Gemini AI</h3>
+                    <span>giangnguyenphoto@gmail.com</span>
+                </div>
+            </div>
+            <button class="gemini-close-btn" id="geminiCloseBtn">&times;</button>
+        </div>
+        <div class="gemini-messages-box" id="geminiMessagesContainer">
+            <div class="msg-bubble msg-gemini">Xin chào! Tôi là Trợ lý AI cấp cao của anh <b>Nguyễn Trường Giang</b>. Hãy đặt những câu hỏi mở hoặc chuyên sâu về tiếp thị, chiến dịch tại Đại Trường Phát (DTP), Golden Gate, Heineken, hay y tế số tại Bệnh viện Nam Cần Thơ, tôi sẽ giải đáp chi tiết theo thời gian thực!</div>
+        </div>
+        <div class="gemini-input-area">
+            <input type="text" class="gemini-input" id="geminiInputField" placeholder="Nhập câu hỏi thảo luận chiến lược...">
+            <button class="gemini-send-btn" id="geminiSendBtn"><svg style="width:18px; height:18px; fill:#fff; transform: rotate(-45deg) translate(2px, -2px);" viewBox="0 0 24 24"><path d="M2 21L23 12L2 3V10L17 12L2 14V21Z"/></svg></button>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Nguyễn Trường Giang. Tối ưu trải nghiệm UI/UX đa phương tiện tương tác cao.</p></footer>
+
+    <script>
+        const chatHub = document.getElementById('dynamicChatHub');
+        const geminiTriggerBtn = document.getElementById('geminiTriggerBtn');
+        const geminiChatWindow = document.getElementById('geminiChatWindow');
+        
+        function updateFloatingHubs() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const windowHeight = window.innerHeight;
+            chatHub.style.top = (scrollTop + (windowHeight * 0.58)) + 'px';
+            geminiTriggerBtn.style.top = (scrollTop + (windowHeight * 0.85)) + 'px';
+            geminiChatWindow.style.top = (scrollTop + (windowHeight * 0.20)) + 'px';
+        }
+        window.addEventListener('scroll', updateFloatingHubs);
+        window.addEventListener('resize', updateFloatingHubs);
+        updateFloatingHubs();
+
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('pageProgressBar').style.width = (winScroll / height) * 100 + '%';
+        });
+
+        const nodes = document.querySelectorAll('.timeline-node');
+        const scrollObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.15 });
+        nodes.forEach(node => scrollObserver.observe(node));
+
+        const tiltCard = document.getElementById('mouseTiltCard');
+        if(tiltCard) {
+            tiltCard.addEventListener('mousemove', (e) => {
+                const rect = tiltCard.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - (rect.width / 2);
+                const mouseY = e.clientY - rect.top - (rect.height / 2);
+                tiltCard.style.transform = `perspective(1000px) rotateX(${-(mouseY / rect.height) * 12}deg) rotateY(${(mouseX / rect.width) * 12}deg) translateZ(15px)`;
+            });
+            tiltCard.addEventListener('mouseleave', () => { tiltCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)'; });
+        }
+
+        const avatarContainer = document.getElementById('avatar3DContainer');
+        if(avatarContainer) {
+            avatarContainer.addEventListener('mousemove', (e) => {
+                const rect = avatarContainer.getBoundingClientRect();
+                const x = e.clientX - rect.left - (rect.width / 2);
+                const y = e.clientY - rect.top - (rect.height / 2);
+                avatarContainer.style.transform = `perspective(1200px) rotateX(${-(y / rect.height) * 30}deg) rotateY(${(x / rect.width) * 30}deg) scale(1.05)`;
+            });
+            avatarContainer.addEventListener('mouseleave', () => { avatarContainer.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1)'; });
+        }
+
+        const mechanicalNodes = document.querySelectorAll('.mechanical-node');
+        mechanicalNodes.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const mouseX = e.clientX - rect.left - (rect.width / 2);
+                const mouseY = e.clientY - rect.top - (rect.height / 2);
+                card.style.transform = `perspective(1000px) rotateX(${-(mouseY / rect.height) * 10}deg) rotateY(${(mouseX / rect.width) * 10}deg) translateZ(15px)`;
+            });
+            card.addEventListener('mouseleave', () => { card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0)'; });
+        });
+
+        const geminiCloseBtn = document.getElementById('geminiCloseBtn');
+        const geminiSendBtn = document.getElementById('geminiSendBtn');
+        const geminiInputField = document.getElementById('geminiInputField');
+        const geminiMessagesContainer = document.getElementById('geminiMessagesContainer');
+
+        geminiTriggerBtn.addEventListener('click', () => {
+            geminiChatWindow.classList.toggle('active');
+            if (geminiChatWindow.classList.contains('active')) geminiInputField.focus();
+        });
+        geminiCloseBtn.addEventListener('click', () => { geminiChatWindow.classList.remove('active'); });
+
+        async function sendMessageToAssistant() {
+            const queryText = geminiInputField.value.trim();
+            if (!queryText) return;
+
+            const userBubble = document.createElement('div');
+            userBubble.className = 'msg-bubble msg-user';
+            userBubble.textContent = queryText;
+            geminiMessagesContainer.appendChild(userBubble);
+            geminiInputField.value = '';
+            geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+
+            const loaderNode = document.createElement('div');
+            loaderNode.className = 'typing-loader';
+            loaderNode.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            geminiMessagesContainer.appendChild(loaderNode);
+            geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+
+            try {
+                const API_KEY = "AQ.Ab8RN6KqkDkLBKVl9nMJxJfRUMd4-6pHXlbPt02LCdng0HOq2Q"; 
+                const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + API_KEY;
+                
+                const requestBody = {
+                    "contents": [{
+                        "parts": [{"text": queryText}]
+                    }],
+                    "systemInstruction": {
+                        "parts": [{
+                            "text": "Bạn là Trợ lý AI cấp cao, đại diện chiến lược tiếp thị của Nguyễn Trường Giang (SĐT: 0932454245). Hãy trả lời thật rộng rãi, phân tích chuyên môn chi tiết dựa trên dải kinh nghiệm đa dạng ngành Y tế (Bệnh viện ĐH Nam Cần Thơ), Giáo dục (Tập đoàn Đại Trường Phát DTP), F&B (Cơm Tấm Phúc Lộc Thọ, Golden Gate), FMCG (Heineken)."
+                        }]
+                    },
+                    "generationConfig": {
+                        "temperature": 0.7,
+                        "maxOutputTokens": 800
+                    }
+                };
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+                
+                if (!response.ok) throw new Error("HTTP error " + response.status);
+                
+                const data = await response.json();
+                geminiMessagesContainer.removeChild(loaderNode);
+
+                const aiBubble = document.createElement('div');
+                aiBubble.className = 'msg-bubble msg-gemini';
+                let rawText = data.candidates[0].content.parts[0].text;
+                rawText = rawText.replace(/\*\*/g, ''); 
+                aiBubble.textContent = rawText;
+                
+                geminiMessagesContainer.appendChild(aiBubble);
+            } catch (error) {
+                if(geminiMessagesContainer.contains(loaderNode)) geminiMessagesContainer.removeChild(loaderNode);
+                const errorBubble = document.createElement('div');
+                errorBubble.className = 'msg-bubble msg-gemini';
+                errorBubble.textContent = "Hệ thống kết nối API đang bận (Lỗi cấu hình Key hoặc Quota). Anh vui lòng liên hệ trao đổi trực tiếp qua Zalo (0932454245) nhé!";
+                geminiMessagesContainer.appendChild(errorBubble);
+            }
+            geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+        }
+
+        geminiSendBtn.addEventListener('click', sendMessageToAssistant);
+        geminiInputField.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessageToAssistant(); });
+    </script>
+</body>
+</html>
+async function sendMessageToAssistant() {
+    const queryText = geminiInputField.value.trim();
+    if (!queryText) return;
+
+    // 1. Hiển thị tin nhắn của người dùng
+    const userBubble = document.createElement('div');
+    userBubble.className = 'msg-bubble msg-user';
+    userBubble.textContent = queryText;
+    geminiMessagesContainer.appendChild(userBubble);
+    geminiInputField.value = '';
+    geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+
+    // 2. Hiển thị hiệu ứng "Đang gõ..." của AI
+    const loaderNode = document.createElement('div');
+    loaderNode.className = 'typing-loader';
+    loaderNode.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    geminiMessagesContainer.appendChild(loaderNode);
+    geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+
+    // 3. GỌI API GEMINI (Xử lý cốt lõi)
+    try {
+        // Thay API Key của anh vào đây
+        const API_KEY = "AQ.Ab8RN6KqkDkLBKVl9nMJxJfRUMd4-6pHXlbPt02LCdng0HOq2Q"; 
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+        
+        // System Instruction: "Nhồi" kiến thức cho AI
+        const requestBody = {
+            "contents": [{
+                "parts": [{"text": queryText}]
+            }],
+            "systemInstruction": {
+                "parts": [{
+                    "text": "Bạn là Trợ lý AI cấp cao, đại diện chiến lược tiếp thị của Nguyễn Trường Giang (SĐT: 0932454245). Hãy trả lời thật rộng rãi, phân tích chuyên môn chi tiết dựa trên dải kinh nghiệm đa dạng ngành Y tế (Bệnh viện ĐH Nam Cần Thơ), Giáo dục (Tập đoàn Đại Trường Phát DTP), F&B (Cơm Tấm Phúc Lộc Thọ, Golden Gate), FMCG (Heineken)."
+                }]
+            },
+            "generationConfig": {
+                "temperature": 0.7, // Độ sáng tạo của câu trả lời (0.0 đến 1.0)
+                "maxOutputTokens": 800 // Độ dài tối đa của câu trả lời
+            }
+        };
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody)
+        });
+        
+        if (!response.ok) throw new Error("HTTP error " + response.status);
+        
+        const data = await response.json();
+        geminiMessagesContainer.removeChild(loaderNode);
+
+        // 4. Hiển thị câu trả lời của AI
+        const aiBubble = document.createElement('div');
+        aiBubble.className = 'msg-bubble msg-gemini';
+        
+        // Lọc bỏ các dấu ** định dạng in đậm thừa của Markdown
+        let rawText = data.candidates[0].content.parts[0].text;
+        rawText = rawText.replace(/\*\*/g, ''); 
+        aiBubble.textContent = rawText;
+        
+        geminiMessagesContainer.appendChild(aiBubble);
+    } catch (error) {
+        if(geminiMessagesContainer.contains(loaderNode)) geminiMessagesContainer.removeChild(loaderNode);
+        const errorBubble = document.createElement('div');
+        errorBubble.className = 'msg-bubble msg-gemini';
+        errorBubble.textContent = "Hệ thống kết nối API đang bận. Anh vui lòng liên hệ trao đổi trực tiếp qua Zalo (0932454245) nhé!";
+        geminiMessagesContainer.appendChild(errorBubble);
+    }
+    geminiMessagesContainer.scrollTop = geminiMessagesContainer.scrollHeight;
+}
